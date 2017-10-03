@@ -1,4 +1,4 @@
-baseurl = ""
+baseurl = "https://mollysblog2.netlify.com/"
 languageCode = "en-gb"
 title = "A Bookworm's Paradise"
 theme = "hpstr-hugo-theme"
