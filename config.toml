@@ -1,0 +1,20 @@
+baseurl = ""
+languageCode = "en-gb"
+title = "A Bookworm's Paradise"
+theme = "hpstr-hugo-theme"
+pluralizelisttitles = false
+PygmentsCodeFences = true
+Paginate = 5
+disqusShortname = "hpstrhugo"
+
+[params]
+	subtitle = "The Wonderous Literary Collection of Molly"
+	[params.author]
+		name = "Molly Vonk"
+		avatar = "/images/Face.jpg"
+		bio = "An elegant, responsive theme for Hugo"
+		github = "dldx/hpstr-hugo-theme"
+	[params.image]
+	  feature = "/images/Shelf.jpg"
+	  credit = "dargadgetz"
+	  creditlink = "http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/"
