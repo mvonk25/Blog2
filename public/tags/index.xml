@@ -21,11 +21,38 @@
     </item>
     
     <item>
+      <title>Drama</title>
+      <link>/tags/drama/</link>
+      <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/drama/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Fantasy Fiction</title>
       <link>/tags/fantasy-fiction/</link>
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/fantasy-fiction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Historical Fiction</title>
+      <link>/tags/historical-fiction/</link>
+      <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/historical-fiction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Romance</title>
+      <link>/tags/romance/</link>
+      <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/romance/</guid>
       <description></description>
     </item>
     
@@ -41,7 +68,7 @@
     <item>
       <title>Visualization</title>
       <link>/tags/visualization/</link>
-      <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/visualization/</guid>
       <description></description>

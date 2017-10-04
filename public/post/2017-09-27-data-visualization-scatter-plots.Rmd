@@ -10,7 +10,15 @@ tags:
   - Chart
 ---
 
-After downloading and bringing in the following packages: Lahman, sqldf, and ggplot2. The first step is to extract the data from the Lahman database.
+After downloading and bringing in the following packages: 
+
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+
+The first step is to extract the data from the Lahman database.
 
 ```{r}
 query<-"SELECT playerID,sum(HR) AS career_HR,sum(SO) AS career_SO

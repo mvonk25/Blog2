@@ -13,10 +13,10 @@
     
     <item>
       <title>Data Visualization: Scatter Plots</title>
-      <link>/posts/data-visualization-scatter-plots/</link>
+      <link>/post/data-visualization-scatter-plots/</link>
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/posts/data-visualization-scatter-plots/</guid>
+      <guid>/post/data-visualization-scatter-plots/</guid>
       <description>After downloading and bringing in the following packages:
 library(Lahman)library(sqldf)## Loading required package: gsubfn## Loading required package: proto## Loading required package: RSQLitelibrary(ggplot2)The first step is to extract the data from the Lahman database.
 query&amp;lt;-&amp;quot;SELECT playerID,sum(HR) AS career_HR,sum(SO) AS career_SOFROM BattingGROUP BY playerIDHAVING sum(HR)&amp;gt;=400&amp;quot;result&amp;lt;-sqldf(query)Now the data has been saved under the results. The next step is to write out the commands for visualizing the data.</description>

@@ -6,17 +6,41 @@
     <description>Recent content in Visualization on A Bookworm&#39;s Paradise</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 27 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Oct 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/visualization/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Data Visualization: Histograms</title>
+      <link>/post/data-visualization-histograms/</link>
+      <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-visualization-histograms/</guid>
+      <description>After downloading the following packages:
+library(Lahman)library(sqldf)## Loading required package: gsubfn## Loading required package: proto## Loading required package: RSQLitelibrary(ggplot2)The first step is to extract the data from Lahman.
+query&amp;lt;-&amp;quot;SELECT weightFROM Master&amp;quot;result&amp;lt;-sqldf(query)Now the data has been saved under results. The next step is to write the commands for visualizing the data.
+ggplot()+geom_histogram(data=result,aes(x=weight))## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</description>
+    </item>
+    
+    <item>
+      <title>Data Visualization: Time Series</title>
+      <link>/post/data-visualization-time-series/</link>
+      <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-visualization-time-series/</guid>
+      <description>After downloading and bringing in the following packages:
+library(Lahman)library(sqldf)## Loading required package: gsubfn## Loading required package: proto## Loading required package: RSQLitelibrary(ggplot2)The first step is to extract the data from the Lahman database.
+query&amp;lt;-&amp;quot;SELECT yearID,HRFROM BattingWHERE playerID=&amp;#39;ruthba01&amp;#39;&amp;quot;result&amp;lt;-sqldf(query)The next step now that the data is saved under results is to type the commands to visualize the data.
+ggplot()+geom_point(data=result,aes(x=yearID,y=HR))You can add lines to connect the points.</description>
+    </item>
+    
+    <item>
       <title>Data Visualization: Scatter Plots</title>
-      <link>/posts/data-visualization-scatter-plots/</link>
+      <link>/post/data-visualization-scatter-plots/</link>
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/posts/data-visualization-scatter-plots/</guid>
+      <guid>/post/data-visualization-scatter-plots/</guid>
       <description>After downloading and bringing in the following packages:
 library(Lahman)library(sqldf)## Loading required package: gsubfn## Loading required package: proto## Loading required package: RSQLitelibrary(ggplot2)The first step is to extract the data from the Lahman database.
 query&amp;lt;-&amp;quot;SELECT playerID,sum(HR) AS career_HR,sum(SO) AS career_SOFROM BattingGROUP BY playerIDHAVING sum(HR)&amp;gt;=400&amp;quot;result&amp;lt;-sqldf(query)Now the data has been saved under the results. The next step is to write out the commands for visualizing the data.</description>

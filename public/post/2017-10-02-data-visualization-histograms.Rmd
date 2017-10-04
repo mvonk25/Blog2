@@ -1,0 +1,49 @@
+---
+title: 'Data Visualization: Histograms'
+author: Molly Vonk
+date: '2017-10-02'
+slug: data-visualization-histograms
+categories:
+  - R
+tags:
+  - Visualization
+---
+
+After downloading the following packages:
+
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+
+The first step is to extract the data from Lahman.
+```{r}
+query<-"SELECT weight
+FROM Master"
+
+result<-sqldf(query)
+```
+
+Now the data has been saved under results. The next step is to write the commands for visualizing the data.
+
+```{r}
+ggplot()+
+  geom_histogram(data=result,aes(x=weight))
+```
+
+The Histogram could use a couple of edits to make the graph more legible. Such as changing the color to see the bars outline and changing the number of bars.
+
+```{r}
+ggplot()+
+  geom_histogram(data=result,aes(x=weight),color="blue",fill="green",bins=50)
+```
+
+Remember to add a proper title for the graph.
+
+```{r}
+ggplot()+
+  geom_histogram(data=result,aes(x=weight),color="blue",fill="green",bins=50)+
+  ggtitle("Body-Weight Distribution for Baseball Players")
+```
+
