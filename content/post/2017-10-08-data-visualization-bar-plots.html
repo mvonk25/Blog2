@@ -1,0 +1,68 @@
+---
+title: 'Data Visualization: Bar Plots'
+author: Molly Vonk
+date: '2017-10-08'
+slug: data-visualization-bar-plots
+categories:
+  - R
+tags:
+  - Chart
+  - Visualization
+---
+
+
+
+<p>After downloading and bringing in the following packages:</p>
+<pre class="r"><code>library(Lahman)</code></pre>
+<pre><code>## Warning: package &#39;Lahman&#39; was built under R version 3.4.2</code></pre>
+<pre class="r"><code>library(sqldf)</code></pre>
+<pre><code>## Warning: package &#39;sqldf&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Loading required package: gsubfn</code></pre>
+<pre><code>## Loading required package: proto</code></pre>
+<pre><code>## Loading required package: RSQLite</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.2</code></pre>
+<p>Before collecting the data it is important to note the difference between a Factor and a Level. A Factor is the whole, while a Level is the part.</p>
+<p>For example in a classroom of people one possible Factor could be hair color. Sarah’s has blonde hair and Tyler has black hair. Sarah’s Level would be blonde, while Tyler’s Level would be black.</p>
+<p>When using R it is important to be specific; to make sure that R understands what the Factors are and what the Levels are.</p>
+<div id="example-for-writing-the-commands" class="section level5">
+<h5>Example for writing the commands</h5>
+<p>Using Class Standing</p>
+<pre class="r"><code>standing&lt;-c(&quot;junior&quot;,&quot;freshman&quot;,&quot;junior&quot;,&quot;sophomore&quot;,&quot;senior&quot;)
+
+standing&lt;-factor(standing)</code></pre>
+<p>R organizes information alphabetically by default for the Levels. Therefore to set a specific order for the levels:</p>
+<pre class="r"><code>standing&lt;-c(&quot;junior&quot;,&quot;freshman&quot;,&quot;junior&quot;,&quot;sophomore&quot;,&quot;senior&quot;)
+
+standing&lt;-factor(standing,levels=c(&quot;freshman&quot;,&quot;sophomore&quot;,&quot;junior&quot;,&quot;senior&quot;))</code></pre>
+<p>The first step for creating a Bar Plot chart is to extract the data from the Lahman database.</p>
+<pre class="r"><code>query&lt;-&quot;SELECT name,HR
+FROM Teams
+WHERE yearID=1980
+ORDER BY HR&quot;
+
+result&lt;-sqldf(query)
+
+result$name&lt;-factor(result$name,levels=result$name)</code></pre>
+<p>The next step is to write the commands to visualize the data.</p>
+<pre class="r"><code>ggplot()+
+  geom_bar(data=result,aes(x=name,y=HR),stat=&#39;identity&#39;)+
+  coord_flip()</code></pre>
+<p><img src="/post/2017-10-08-data-visualization-bar-plots_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Now you need to add the Titles.</p>
+<pre class="r"><code>ggplot()+
+  geom_bar(data=result,aes(x=name,y=HR),stat=&#39;identity&#39;)+
+  coord_flip()+
+  ylab(&quot;Homeruns&quot;)+
+  xlab(&quot;Team&quot;)+
+  ggtitle(&quot;1980 Team Homerun Distribution&quot;)</code></pre>
+<p><img src="/post/2017-10-08-data-visualization-bar-plots_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>You can also change the colors on the chart.</p>
+<pre class="r"><code>ggplot()+
+  geom_bar(data=result,aes(x=name,y=HR),stat=&#39;identity&#39;,color=&#39;purple&#39;,fill=&#39;pink&#39;)+
+  coord_flip()+
+  ylab(&quot;Homeruns&quot;)+
+  xlab(&quot;Team&quot;)+
+  ggtitle(&quot;1980 Team Homerun Distribution&quot;)</code></pre>
+<p><img src="/post/2017-10-08-data-visualization-bar-plots_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>

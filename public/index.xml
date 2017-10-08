@@ -6,10 +6,40 @@
     <description>Recent content on A Bookworm&#39;s Paradise</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 03 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Oct 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Data Visualization: Bar Plots</title>
+      <link>/post/data-visualization-bar-plots/</link>
+      <pubDate>Sun, 08 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-visualization-bar-plots/</guid>
+      <description>After downloading and bringing in the following packages:
+library(Lahman)## Warning: package &amp;#39;Lahman&amp;#39; was built under R version 3.4.2library(sqldf)## Warning: package &amp;#39;sqldf&amp;#39; was built under R version 3.4.2## Loading required package: gsubfn## Loading required package: proto## Loading required package: RSQLitelibrary(ggplot2)## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.4.2Before collecting the data it is important to note the difference between a Factor and a Level.</description>
+    </item>
+    
+    <item>
+      <title>Data Visualization: Dashboard</title>
+      <link>/post/data-visualization-dashboard/</link>
+      <pubDate>Sun, 08 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-visualization-dashboard/</guid>
+      <description>After installing the following packages:
+library(Lahman)## Warning: package &amp;#39;Lahman&amp;#39; was built under R version 3.4.2library(sqldf)## Warning: package &amp;#39;sqldf&amp;#39; was built under R version 3.4.2## Loading required package: gsubfn## Loading required package: proto## Loading required package: RSQLitelibrary(ggplot2)## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.4.2library(flexdashboard)## Warning: package &amp;#39;flexdashboard&amp;#39; was built under R version 3.4.2In RStudio select New File, then R Markdown file.</description>
+    </item>
+    
+    <item>
+      <title>The Shadowhunter Chronicles By: Cassandra Clare</title>
+      <link>/post/the-shadowhunter-chronicles-by-cassandra-clare/</link>
+      <pubDate>Sun, 08 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/the-shadowhunter-chronicles-by-cassandra-clare/</guid>
+      <description>Credited to http://cassandraclare.com/shadowhunter-chronicles/
+SynopsisThis young adult book series encompasses four novel series. These works are set in a universe where fairy tales and mythologies, both pagan and Judeo-Christian, exist with its figures existing alongside the mundanes (normal humans). A race of humans who possess angel blood, the Nephilim or Shadowhunters, is organized to patrol the Shadow World and prevent demons as well as Downworlders, including warlocks, faeries, werewolves, and vampires from attacking the mundanes.</description>
+    </item>
     
     <item>
       <title>History Girls By: Adele Geras</title>
@@ -50,9 +80,8 @@ ggplot()+geom_histogram(data=result,aes(x=weight))## `stat_bin()` using `bins 
       
       <guid>/post/data-visualization-time-series/</guid>
       <description>After downloading and bringing in the following packages:
-library(Lahman)library(sqldf)## Loading required package: gsubfn## Loading required package: proto## Loading required package: RSQLitelibrary(ggplot2)The first step is to extract the data from the Lahman database.
-query&amp;lt;-&amp;quot;SELECT yearID,HRFROM BattingWHERE playerID=&amp;#39;ruthba01&amp;#39;&amp;quot;result&amp;lt;-sqldf(query)The next step now that the data is saved under results is to type the commands to visualize the data.
-ggplot()+geom_point(data=result,aes(x=yearID,y=HR))You can add lines to connect the points.</description>
+library(Lahman)## Warning: package &amp;#39;Lahman&amp;#39; was built under R version 3.4.2library(sqldf)## Warning: package &amp;#39;sqldf&amp;#39; was built under R version 3.4.2## Loading required package: gsubfn## Loading required package: proto## Loading required package: RSQLitelibrary(ggplot2)## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.4.2The first step is to extract the data from the Lahman database.
+query&amp;lt;-&amp;quot;SELECT yearID,HRFROM BattingWHERE playerID=&amp;#39;ruthba01&amp;#39;&amp;quot;result&amp;lt;-sqldf(query)The next step now that the data is saved under results is to type the commands to visualize the data.</description>
     </item>
     
     <item>

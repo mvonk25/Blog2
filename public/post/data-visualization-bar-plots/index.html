@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Data Visualization: Time Series &#8211; A Bookworm&#39;s Paradise</title>
+<title>Data Visualization: Bar Plots &#8211; A Bookworm&#39;s Paradise</title>
 <meta name="description" content="">
 
     
@@ -14,28 +14,28 @@
 
 
 
-<meta name="twitter:title" content="Data Visualization: Time Series">
+<meta name="twitter:title" content="Data Visualization: Bar Plots">
 <meta name="twitter:description" content="The Wonderous Literary Collection of Molly Vonk">
 
 
 
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="Data Visualization: Time Series">
+<meta property="og:title" content="Data Visualization: Bar Plots">
 <meta property="og:description" content="The Wonderous Literary Collection of Molly Vonk">
-<meta property="og:url" content="/post/data-visualization-time-series/">
+<meta property="og:url" content="/post/data-visualization-bar-plots/">
 <meta property="og:site_name" content="A Bookworm&#39;s Paradise">
 
 
 
-  <meta property="og:updated_time" content="2017-10-02T00:00:00&#43;00:00"/>
+  <meta property="og:updated_time" content="2017-10-08T00:00:00&#43;00:00"/>
 
 
 
 
 
 
-<link rel="canonical" href="/post/data-visualization-time-series/">
+<link rel="canonical" href="/post/data-visualization-bar-plots/">
 
 
 <meta name="HandheldFriendly" content="True">
@@ -113,14 +113,14 @@
     <header class="header-title">
       <div class="header-title-wrap">
         
-          <h1 class="entry-title"><a href="/post/data-visualization-time-series/" rel="bookmark" title="Data Visualization: Time Series">Data Visualization: Time Series</a></h1>
+          <h1 class="entry-title"><a href="/post/data-visualization-bar-plots/" rel="bookmark" title="Data Visualization: Bar Plots">Data Visualization: Bar Plots</a></h1>
         
          
-        <h2><span class="entry-date date published"><time datetime="2017-10-02 00:00:00 &#43;0000 UTC">October 2, 2017</time></span></h2>
+        <h2><span class="entry-date date published"><time datetime="2017-10-08 00:00:00 &#43;0000 UTC">October 8, 2017</time></span></h2>
         
       <p class="entry-reading-time">
         <i class="fa fa-clock-o"></i>
-        Reading time ~1 minute
+        Reading time ~2 minutes
     </p>
       </div>
     </header>
@@ -135,37 +135,50 @@
 <pre><code>## Loading required package: RSQLite</code></pre>
 <pre class="r"><code>library(ggplot2)</code></pre>
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.2</code></pre>
-<p>The first step is to extract the data from the Lahman database.</p>
-<pre class="r"><code>query&lt;-&quot;SELECT yearID,HR
-FROM Batting
-WHERE playerID=&#39;ruthba01&#39;&quot;
+<p>Before collecting the data it is important to note the difference between a Factor and a Level. A Factor is the whole, while a Level is the part.</p>
+<p>For example in a classroom of people one possible Factor could be hair color. Sarah’s has blonde hair and Tyler has black hair. Sarah’s Level would be blonde, while Tyler’s Level would be black.</p>
+<p>When using R it is important to be specific; to make sure that R understands what the Factors are and what the Levels are.</p>
+<div id="example-for-writing-the-commands" class="section level5">
+<h5>Example for writing the commands</h5>
+<p>Using Class Standing</p>
+<pre class="r"><code>standing&lt;-c(&quot;junior&quot;,&quot;freshman&quot;,&quot;junior&quot;,&quot;sophomore&quot;,&quot;senior&quot;)
 
-result&lt;-sqldf(query)</code></pre>
-<p>The next step now that the data is saved under results is to type the commands to visualize the data.</p>
+standing&lt;-factor(standing)</code></pre>
+<p>R organizes information alphabetically by default for the Levels. Therefore to set a specific order for the levels:</p>
+<pre class="r"><code>standing&lt;-c(&quot;junior&quot;,&quot;freshman&quot;,&quot;junior&quot;,&quot;sophomore&quot;,&quot;senior&quot;)
+
+standing&lt;-factor(standing,levels=c(&quot;freshman&quot;,&quot;sophomore&quot;,&quot;junior&quot;,&quot;senior&quot;))</code></pre>
+<p>The first step for creating a Bar Plot chart is to extract the data from the Lahman database.</p>
+<pre class="r"><code>query&lt;-&quot;SELECT name,HR
+FROM Teams
+WHERE yearID=1980
+ORDER BY HR&quot;
+
+result&lt;-sqldf(query)
+
+result$name&lt;-factor(result$name,levels=result$name)</code></pre>
+<p>The next step is to write the commands to visualize the data.</p>
 <pre class="r"><code>ggplot()+
-  geom_point(data=result,aes(x=yearID,y=HR))</code></pre>
-<p><img src="/post/2017-10-02-data-visualization-time-series_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>You can add lines to connect the points.</p>
+  geom_bar(data=result,aes(x=name,y=HR),stat=&#39;identity&#39;)+
+  coord_flip()</code></pre>
+<p><img src="/post/2017-10-08-data-visualization-bar-plots_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Now you need to add the Titles.</p>
 <pre class="r"><code>ggplot()+
-  geom_point(data=result,aes(x=yearID,y=HR))+
-  geom_line(data=result,aes(x=yearID,y=HR))</code></pre>
-<p><img src="/post/2017-10-02-data-visualization-time-series_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>Next step is to add the Titles.</p>
+  geom_bar(data=result,aes(x=name,y=HR),stat=&#39;identity&#39;)+
+  coord_flip()+
+  ylab(&quot;Homeruns&quot;)+
+  xlab(&quot;Team&quot;)+
+  ggtitle(&quot;1980 Team Homerun Distribution&quot;)</code></pre>
+<p><img src="/post/2017-10-08-data-visualization-bar-plots_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>You can also change the colors on the chart.</p>
 <pre class="r"><code>ggplot()+
-  geom_point(data=result,aes(x=yearID,y=HR))+
-  geom_line(data=result,aes(x=yearID,y=HR))+
-  ggtitle(&quot;Ruth&#39;s Homerun Totals Throughout the Years&quot;)+
-  xlab(&quot;year&quot;)+
-  ylab(&quot;homeruns&quot;)</code></pre>
-<p><img src="/post/2017-10-02-data-visualization-time-series_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>If you don’t want the points to be on the graph , you can remove them by ‘pounding them out’. This means that you simply place a # sign in front of the command line for the points.</p>
-<pre class="r"><code>ggplot()+
-  #geom_point(data=result,aes(x=yearID,y=HR))+
-  geom_line(data=result,aes(x=yearID,y=HR))+
-  ggtitle(&quot;Ruth&#39;s Homerun Totals Throughout the Years&quot;)+
-  xlab(&quot;year&quot;)+
-  ylab(&quot;homeruns&quot;)</code></pre>
-<p><img src="/post/2017-10-02-data-visualization-time-series_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+  geom_bar(data=result,aes(x=name,y=HR),stat=&#39;identity&#39;,color=&#39;purple&#39;,fill=&#39;pink&#39;)+
+  coord_flip()+
+  ylab(&quot;Homeruns&quot;)+
+  xlab(&quot;Team&quot;)+
+  ggtitle(&quot;1980 Team Homerun Distribution&quot;)</code></pre>
+<p><img src="/post/2017-10-08-data-visualization-bar-plots_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
 
       <footer class="entry-meta">
           
@@ -174,9 +187,9 @@ result&lt;-sqldf(query)</code></pre>
         
         <div class="social-share">
   <ul class="socialcount socialcount-small inline-list">
-    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fdata-visualization-time-series%2f" target="_blank" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
-    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=%2fpost%2fdata-visualization-time-series%2f" target="_blank" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
-    <li class="googleplus"><a href="https://plus.google.com/share?url=%2fpost%2fdata-visualization-time-series%2f" target="_blank" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fdata-visualization-bar-plots%2f" target="_blank" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=%2fpost%2fdata-visualization-bar-plots%2f" target="_blank" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=%2fpost%2fdata-visualization-bar-plots%2f" target="_blank" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
   </ul>
 </div>
 

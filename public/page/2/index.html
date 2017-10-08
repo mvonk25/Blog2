@@ -37,7 +37,7 @@
     <meta property="og:image" content="/images/Shelf.jpg" />
 
 
-  <meta property="og:updated_time" content="2017-09-27T00:00:00&#43;00:00"/>
+  <meta property="og:updated_time" content="2017-10-02T00:00:00&#43;00:00"/>
 
 
 
@@ -137,6 +137,171 @@
 </div>
 
 <div id="main" role="main">
+
+<article class="hentry">
+  <header>
+    
+    <div class="entry-meta">
+         
+		<span class="entry-date date published updated"><time datetime="2017-10-02 00:00:00 &#43;0000 UTC"><a href="/post/data-visualization-histograms/">Oct 2, 2017</a></time></span>
+        
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+        Reading time ~1 minute
+      </span>
+    </div>
+    
+	<h1 class="entry-title"><a href="/post/data-visualization-histograms/" rel="bookmark" title="Data Visualization: Histograms" itemprop="url">Data Visualization: Histograms</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <p>After downloading the following packages:</p>
+<pre class="r"><code>library(Lahman)
+library(sqldf)</code></pre>
+<pre><code>## Loading required package: gsubfn</code></pre>
+<pre><code>## Loading required package: proto</code></pre>
+<pre><code>## Loading required package: RSQLite</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<p>The first step is to extract the data from Lahman.</p>
+<pre class="r"><code>query&lt;-&quot;SELECT weight
+FROM Master&quot;
+
+result&lt;-sqldf(query)</code></pre>
+<p>Now the data has been saved under results. The next step is to write the commands for visualizing the data.</p>
+<pre class="r"><code>ggplot()+
+  geom_histogram(data=result,aes(x=weight))</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 854 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="/post/2017-10-02-data-visualization-histograms_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The Histogram could use a couple of edits to make the graph more legible. Such as changing the color to see the bars outline and changing the number of bars.</p>
+<pre class="r"><code>ggplot()+
+  geom_histogram(data=result,aes(x=weight),color=&quot;blue&quot;,fill=&quot;green&quot;,bins=50)</code></pre>
+<pre><code>## Warning: Removed 854 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="/post/2017-10-02-data-visualization-histograms_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Remember to add a proper title for the graph.</p>
+<pre class="r"><code>ggplot()+
+  geom_histogram(data=result,aes(x=weight),color=&quot;blue&quot;,fill=&quot;green&quot;,bins=50)+
+  ggtitle(&quot;Body-Weight Distribution for Baseball Players&quot;)</code></pre>
+<pre><code>## Warning: Removed 854 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="/post/2017-10-02-data-visualization-histograms_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+
+  </div>
+</article>
+
+<article class="hentry">
+  <header>
+    
+    <div class="entry-meta">
+         
+		<span class="entry-date date published updated"><time datetime="2017-10-02 00:00:00 &#43;0000 UTC"><a href="/post/data-visualization-time-series/">Oct 2, 2017</a></time></span>
+        
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+        Reading time ~1 minute
+      </span>
+    </div>
+    
+	<h1 class="entry-title"><a href="/post/data-visualization-time-series/" rel="bookmark" title="Data Visualization: Time Series" itemprop="url">Data Visualization: Time Series</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <p>After downloading and bringing in the following packages:</p>
+<pre class="r"><code>library(Lahman)</code></pre>
+<pre><code>## Warning: package &#39;Lahman&#39; was built under R version 3.4.2</code></pre>
+<pre class="r"><code>library(sqldf)</code></pre>
+<pre><code>## Warning: package &#39;sqldf&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Loading required package: gsubfn</code></pre>
+<pre><code>## Loading required package: proto</code></pre>
+<pre><code>## Loading required package: RSQLite</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.2</code></pre>
+<p>The first step is to extract the data from the Lahman database.</p>
+<pre class="r"><code>query&lt;-&quot;SELECT yearID,HR
+FROM Batting
+WHERE playerID=&#39;ruthba01&#39;&quot;
+
+result&lt;-sqldf(query)</code></pre>
+<p>The next step now that the data is saved under results is to type the commands to visualize the data.</p>
+<pre class="r"><code>ggplot()+
+  geom_point(data=result,aes(x=yearID,y=HR))</code></pre>
+<p><img src="/post/2017-10-02-data-visualization-time-series_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>You can add lines to connect the points.</p>
+<pre class="r"><code>ggplot()+
+  geom_point(data=result,aes(x=yearID,y=HR))+
+  geom_line(data=result,aes(x=yearID,y=HR))</code></pre>
+<p><img src="/post/2017-10-02-data-visualization-time-series_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Next step is to add the Titles.</p>
+<pre class="r"><code>ggplot()+
+  geom_point(data=result,aes(x=yearID,y=HR))+
+  geom_line(data=result,aes(x=yearID,y=HR))+
+  ggtitle(&quot;Ruth&#39;s Homerun Totals Throughout the Years&quot;)+
+  xlab(&quot;year&quot;)+
+  ylab(&quot;homeruns&quot;)</code></pre>
+<p><img src="/post/2017-10-02-data-visualization-time-series_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>If you don’t want the points to be on the graph , you can remove them by ‘pounding them out’. This means that you simply place a # sign in front of the command line for the points.</p>
+<pre class="r"><code>ggplot()+
+  #geom_point(data=result,aes(x=yearID,y=HR))+
+  geom_line(data=result,aes(x=yearID,y=HR))+
+  ggtitle(&quot;Ruth&#39;s Homerun Totals Throughout the Years&quot;)+
+  xlab(&quot;year&quot;)+
+  ylab(&quot;homeruns&quot;)</code></pre>
+<p><img src="/post/2017-10-02-data-visualization-time-series_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+
+  </div>
+</article>
+
+<article class="hentry">
+  <header>
+    
+    <div class="entry-meta">
+         
+		<span class="entry-date date published updated"><time datetime="2017-09-27 00:00:00 &#43;0000 UTC"><a href="/post/data-visualization-scatter-plots/">Sep 27, 2017</a></time></span>
+        
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+        Reading time ~1 minute
+      </span>
+    </div>
+    
+	<h1 class="entry-title"><a href="/post/data-visualization-scatter-plots/" rel="bookmark" title="Data Visualization: Scatter Plots" itemprop="url">Data Visualization: Scatter Plots</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <p>After downloading and bringing in the following packages:</p>
+<pre class="r"><code>library(Lahman)
+library(sqldf)</code></pre>
+<pre><code>## Loading required package: gsubfn</code></pre>
+<pre><code>## Loading required package: proto</code></pre>
+<pre><code>## Loading required package: RSQLite</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<p>The first step is to extract the data from the Lahman database.</p>
+<pre class="r"><code>query&lt;-&quot;SELECT playerID,sum(HR) AS career_HR,sum(SO) AS career_SO
+FROM Batting
+GROUP BY playerID
+HAVING sum(HR)&gt;=400&quot;
+
+result&lt;-sqldf(query)</code></pre>
+<p>Now the data has been saved under the results. The next step is to write out the commands for visualizing the data.</p>
+<pre class="r"><code>ggplot()+
+  geom_point(data=result,aes(x=career_SO,y=career_HR))</code></pre>
+<p><img src="/post/2017-09-27-data-visualization-scatter-plots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The Scatter Plot is incomplete still. Next step is to add proper titles to chart.</p>
+<pre class="r"><code>ggplot()+
+  geom_point(data=result,aes(x=career_SO,y=career_HR))+
+  ggtitle(&quot;Career Strikeouts vs. Homeruns for Great Hitters&quot;)+
+  xlab(&quot;Career Strikeouts&quot;)+
+  ylab(&quot;Career Homerunes&quot;)</code></pre>
+<p><img src="/post/2017-09-27-data-visualization-scatter-plots_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>It is also possible to change the size of the points and their color.</p>
+<pre class="r"><code>ggplot()+
+  geom_point(data=result,aes(x=career_SO,y=career_HR), size=3, color=&quot;blue&quot;)+
+  ggtitle(&quot;Career Strikeouts vs. Homeruns for Great Hitters&quot;)+
+  xlab(&quot;Career Strikeouts&quot;)+
+  ylab(&quot;Career Homerunes&quot;)</code></pre>
+<p><img src="/post/2017-09-27-data-visualization-scatter-plots_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+
+  </div>
+</article>
 
 <article class="hentry">
   <header>

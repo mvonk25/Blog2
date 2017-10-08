@@ -1,0 +1,45 @@
+---
+title: 'Data Visualization: Dashboard'
+author: Molly Vonk
+date: '2017-10-08'
+slug: data-visualization-dashboard
+categories:
+  - R
+tags:
+  - Chart
+  - Visualization
+---
+
+After installing the following packages:
+
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+library(flexdashboard)
+```
+
+In R Studio select New File, then R Markdown file. From the pop up screen select From Template and then Flex Dashboard. The markdown file is set up with a template in place for three graphs/charts. Use a new R Script file for your scratch work in extracting and visualizing the data.
+
+Example: Extract
+
+```{r}
+query<-"SELECT yearID,HR FROM Teams"
+
+result<-sqldf(query)
+```
+
+Example: Visualize
+
+```{r}
+ggplot()+
+  geom_point(data=result,aes(x=yearID,y=HR))+
+  xlab("Year")+
+  ylab("Homeruns")
+```
+
+Then once your data is all set, simply copy and paste your work from the R Script file to the R Markdown file into their designated sections: Chart A, B, or C.
+
+Be sure to change the Title names from Chart A, B, or C to the name for that specific chart or graph.
+
+

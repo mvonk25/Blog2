@@ -1,0 +1,88 @@
+---
+title: 'Data Visualization: Bar Plots'
+author: Molly Vonk
+date: '2017-10-08'
+slug: data-visualization-bar-plots
+categories:
+  - R
+tags:
+  - Chart
+  - Visualization
+---
+
+After downloading and bringing in the following packages: 
+
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+
+Before collecting the data it is important to note the difference between a Factor and a Level. A Factor is the whole, while a Level is the part.
+
+For example in a classroom of people one possible Factor could be hair color. Sarah's has blonde hair and Tyler has black hair. Sarah's Level would be blonde, while Tyler's Level would be black.
+
+When using R it is important to be specific; to make sure that R understands what the Factors are and what the Levels are.
+
+##### Example for writing the commands
+
+Using Class Standing
+
+```{r}
+standing<-c("junior","freshman","junior","sophomore","senior")
+
+standing<-factor(standing)
+```
+
+R organizes information alphabetically by default for the Levels. Therefore to set a specific order for the levels:
+
+```{r}
+standing<-c("junior","freshman","junior","sophomore","senior")
+
+standing<-factor(standing,levels=c("freshman","sophomore","junior","senior"))
+```
+
+The first step for creating a Bar Plot chart is to extract the data from the Lahman database.
+
+```{r}
+query<-"SELECT name,HR
+FROM Teams
+WHERE yearID=1980
+ORDER BY HR"
+
+result<-sqldf(query)
+
+result$name<-factor(result$name,levels=result$name)
+```
+
+The next step is to write the commands to visualize the data.
+
+```{r}
+ggplot()+
+  geom_bar(data=result,aes(x=name,y=HR),stat='identity')+
+  coord_flip()
+```
+
+Now you need to add the Titles.
+
+```{r}
+ggplot()+
+  geom_bar(data=result,aes(x=name,y=HR),stat='identity')+
+  coord_flip()+
+  ylab("Homeruns")+
+  xlab("Team")+
+  ggtitle("1980 Team Homerun Distribution")
+```
+
+You can also change the colors on the chart.
+
+```{r}
+ggplot()+
+  geom_bar(data=result,aes(x=name,y=HR),stat='identity',color='purple',fill='pink')+
+  coord_flip()+
+  ylab("Homeruns")+
+  xlab("Team")+
+  ggtitle("1980 Team Homerun Distribution")
+```
+
+

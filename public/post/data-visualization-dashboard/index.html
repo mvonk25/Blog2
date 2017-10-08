@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Data Visualization: Time Series &#8211; A Bookworm&#39;s Paradise</title>
+<title>Data Visualization: Dashboard &#8211; A Bookworm&#39;s Paradise</title>
 <meta name="description" content="">
 
     
@@ -14,28 +14,28 @@
 
 
 
-<meta name="twitter:title" content="Data Visualization: Time Series">
+<meta name="twitter:title" content="Data Visualization: Dashboard">
 <meta name="twitter:description" content="The Wonderous Literary Collection of Molly Vonk">
 
 
 
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="Data Visualization: Time Series">
+<meta property="og:title" content="Data Visualization: Dashboard">
 <meta property="og:description" content="The Wonderous Literary Collection of Molly Vonk">
-<meta property="og:url" content="/post/data-visualization-time-series/">
+<meta property="og:url" content="/post/data-visualization-dashboard/">
 <meta property="og:site_name" content="A Bookworm&#39;s Paradise">
 
 
 
-  <meta property="og:updated_time" content="2017-10-02T00:00:00&#43;00:00"/>
+  <meta property="og:updated_time" content="2017-10-08T00:00:00&#43;00:00"/>
 
 
 
 
 
 
-<link rel="canonical" href="/post/data-visualization-time-series/">
+<link rel="canonical" href="/post/data-visualization-dashboard/">
 
 
 <meta name="HandheldFriendly" content="True">
@@ -113,10 +113,10 @@
     <header class="header-title">
       <div class="header-title-wrap">
         
-          <h1 class="entry-title"><a href="/post/data-visualization-time-series/" rel="bookmark" title="Data Visualization: Time Series">Data Visualization: Time Series</a></h1>
+          <h1 class="entry-title"><a href="/post/data-visualization-dashboard/" rel="bookmark" title="Data Visualization: Dashboard">Data Visualization: Dashboard</a></h1>
         
          
-        <h2><span class="entry-date date published"><time datetime="2017-10-02 00:00:00 &#43;0000 UTC">October 2, 2017</time></span></h2>
+        <h2><span class="entry-date date published"><time datetime="2017-10-08 00:00:00 &#43;0000 UTC">October 8, 2017</time></span></h2>
         
       <p class="entry-reading-time">
         <i class="fa fa-clock-o"></i>
@@ -125,7 +125,7 @@
       </div>
     </header>
     <div class="entry-content">
-      <p>After downloading and bringing in the following packages:</p>
+      <p>After installing the following packages:</p>
 <pre class="r"><code>library(Lahman)</code></pre>
 <pre><code>## Warning: package &#39;Lahman&#39; was built under R version 3.4.2</code></pre>
 <pre class="r"><code>library(sqldf)</code></pre>
@@ -135,37 +135,21 @@
 <pre><code>## Loading required package: RSQLite</code></pre>
 <pre class="r"><code>library(ggplot2)</code></pre>
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.2</code></pre>
-<p>The first step is to extract the data from the Lahman database.</p>
-<pre class="r"><code>query&lt;-&quot;SELECT yearID,HR
-FROM Batting
-WHERE playerID=&#39;ruthba01&#39;&quot;
+<pre class="r"><code>library(flexdashboard)</code></pre>
+<pre><code>## Warning: package &#39;flexdashboard&#39; was built under R version 3.4.2</code></pre>
+<p>In RStudio select New File, then R Markdown file. From the pop up screen select From Template and then Flex Dashboard. The markdown file is set up with a template in place for three graphs/charts. Use a new R Script file for your scratchwork in extracting and visualizing the data.</p>
+<p>Example: Extract</p>
+<pre class="r"><code>query&lt;-&quot;SELECT yearID,HR FROM Teams&quot;
 
 result&lt;-sqldf(query)</code></pre>
-<p>The next step now that the data is saved under results is to type the commands to visualize the data.</p>
-<pre class="r"><code>ggplot()+
-  geom_point(data=result,aes(x=yearID,y=HR))</code></pre>
-<p><img src="/post/2017-10-02-data-visualization-time-series_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>You can add lines to connect the points.</p>
+<p>Example: Visualize</p>
 <pre class="r"><code>ggplot()+
   geom_point(data=result,aes(x=yearID,y=HR))+
-  geom_line(data=result,aes(x=yearID,y=HR))</code></pre>
-<p><img src="/post/2017-10-02-data-visualization-time-series_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>Next step is to add the Titles.</p>
-<pre class="r"><code>ggplot()+
-  geom_point(data=result,aes(x=yearID,y=HR))+
-  geom_line(data=result,aes(x=yearID,y=HR))+
-  ggtitle(&quot;Ruth&#39;s Homerun Totals Throughout the Years&quot;)+
-  xlab(&quot;year&quot;)+
-  ylab(&quot;homeruns&quot;)</code></pre>
-<p><img src="/post/2017-10-02-data-visualization-time-series_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>If you don’t want the points to be on the graph , you can remove them by ‘pounding them out’. This means that you simply place a # sign in front of the command line for the points.</p>
-<pre class="r"><code>ggplot()+
-  #geom_point(data=result,aes(x=yearID,y=HR))+
-  geom_line(data=result,aes(x=yearID,y=HR))+
-  ggtitle(&quot;Ruth&#39;s Homerun Totals Throughout the Years&quot;)+
-  xlab(&quot;year&quot;)+
-  ylab(&quot;homeruns&quot;)</code></pre>
-<p><img src="/post/2017-10-02-data-visualization-time-series_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+  xlab(&quot;Year&quot;)+
+  ylab(&quot;Homeruns&quot;)</code></pre>
+<p><img src="/post/2017-10-08-data-visualization-dashboard_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Then once your data is all set, simply compy and paste your work from the R Script file to the R Markdown file into their designated sections: Chart A, B, or C.</p>
+<p>Be sure to change the Title names from Chart A, B, or C to the name for that specific chart or graph.</p>
 
       <footer class="entry-meta">
           
@@ -174,9 +158,9 @@ result&lt;-sqldf(query)</code></pre>
         
         <div class="social-share">
   <ul class="socialcount socialcount-small inline-list">
-    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fdata-visualization-time-series%2f" target="_blank" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
-    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=%2fpost%2fdata-visualization-time-series%2f" target="_blank" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
-    <li class="googleplus"><a href="https://plus.google.com/share?url=%2fpost%2fdata-visualization-time-series%2f" target="_blank" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fdata-visualization-dashboard%2f" target="_blank" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=%2fpost%2fdata-visualization-dashboard%2f" target="_blank" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=%2fpost%2fdata-visualization-dashboard%2f" target="_blank" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
   </ul>
 </div>
 
