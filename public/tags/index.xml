@@ -21,11 +21,29 @@
     </item>
     
     <item>
+      <title>Classic</title>
+      <link>/tags/classic/</link>
+      <pubDate>Mon, 09 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/classic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Drama</title>
       <link>/tags/drama/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/drama/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dystopia</title>
+      <link>/tags/dystopia/</link>
+      <pubDate>Mon, 09 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dystopia/</guid>
       <description></description>
     </item>
     
@@ -53,6 +71,15 @@
       <pubDate>Sun, 08 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/romance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Science Fiction</title>
+      <link>/tags/science-fiction/</link>
+      <pubDate>Mon, 09 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/science-fiction/</guid>
       <description></description>
     </item>
     

@@ -13,30 +13,30 @@
     
     <item>
       <title>Data Visualization: Bar Plots</title>
-      <link>/post/data-visualization-bar-plots/</link>
+      <link>/post/r/data-visualization-bar-plots/</link>
       <pubDate>Sun, 08 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/data-visualization-bar-plots/</guid>
+      <guid>/post/r/data-visualization-bar-plots/</guid>
       <description>After downloading and bringing in the following packages:
 library(Lahman)## Warning: package &amp;#39;Lahman&amp;#39; was built under R version 3.4.2library(sqldf)## Warning: package &amp;#39;sqldf&amp;#39; was built under R version 3.4.2## Loading required package: gsubfn## Loading required package: proto## Loading required package: RSQLitelibrary(ggplot2)## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.4.2Before collecting the data it is important to note the difference between a Factor and a Level.</description>
     </item>
     
     <item>
       <title>Data Visualization: Dashboard</title>
-      <link>/post/data-visualization-dashboard/</link>
+      <link>/post/r/data-visualization-dashboard/</link>
       <pubDate>Sun, 08 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/data-visualization-dashboard/</guid>
+      <guid>/post/r/data-visualization-dashboard/</guid>
       <description>After installing the following packages:
 library(Lahman)## Warning: package &amp;#39;Lahman&amp;#39; was built under R version 3.4.2library(sqldf)## Warning: package &amp;#39;sqldf&amp;#39; was built under R version 3.4.2## Loading required package: gsubfn## Loading required package: proto## Loading required package: RSQLitelibrary(ggplot2)## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.4.2library(flexdashboard)## Warning: package &amp;#39;flexdashboard&amp;#39; was built under R version 3.4.2In RStudio select New File, then R Markdown file.</description>
     </item>
     
     <item>
       <title>Data Visualization: Time Series</title>
-      <link>/post/data-visualization-time-series/</link>
+      <link>/post/r/data-visualization-time-series/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/data-visualization-time-series/</guid>
+      <guid>/post/r/data-visualization-time-series/</guid>
       <description>After downloading and bringing in the following packages:
 library(Lahman)## Warning: package &amp;#39;Lahman&amp;#39; was built under R version 3.4.2library(sqldf)## Warning: package &amp;#39;sqldf&amp;#39; was built under R version 3.4.2## Loading required package: gsubfn## Loading required package: proto## Loading required package: RSQLitelibrary(ggplot2)## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.4.2The first step is to extract the data from the Lahman database.
 query&amp;lt;-&amp;quot;SELECT yearID,HRFROM BattingWHERE playerID=&amp;#39;ruthba01&amp;#39;&amp;quot;result&amp;lt;-sqldf(query)The next step now that the data is saved under results is to type the commands to visualize the data.</description>
@@ -44,10 +44,10 @@ query&amp;lt;-&amp;quot;SELECT yearID,HRFROM BattingWHERE playerID=&amp;#39;ru
     
     <item>
       <title>Data Visualization: Scatter Plots</title>
-      <link>/post/data-visualization-scatter-plots/</link>
+      <link>/post/r/data-visualization-scatter-plots/</link>
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/data-visualization-scatter-plots/</guid>
+      <guid>/post/r/data-visualization-scatter-plots/</guid>
       <description>After downloading and bringing in the following packages:
 library(Lahman)library(sqldf)## Loading required package: gsubfn## Loading required package: proto## Loading required package: RSQLitelibrary(ggplot2)The first step is to extract the data from the Lahman database.
 query&amp;lt;-&amp;quot;SELECT playerID,sum(HR) AS career_HR,sum(SO) AS career_SOFROM BattingGROUP BY playerIDHAVING sum(HR)&amp;gt;=400&amp;quot;result&amp;lt;-sqldf(query)Now the data has been saved under the results. The next step is to write out the commands for visualizing the data.</description>

@@ -1,0 +1,67 @@
+---
+title: 'Data Visualization: Time Series'
+author: Molly Vonk
+date: '2017-10-02'
+slug: data-visualization-time-series
+categories:
+  - R
+tags:
+  - Chart
+  - Visualization
+---
+
+After downloading and bringing in the following packages: 
+
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+
+The first step is to extract the data from the Lahman database.
+
+```{r}
+query<-"SELECT yearID,HR
+FROM Batting
+WHERE playerID='ruthba01'"
+
+result<-sqldf(query)
+```
+
+The next step now that the data is saved under results is to type the commands to visualize the data.
+
+```{r}
+ggplot()+
+  geom_point(data=result,aes(x=yearID,y=HR))
+```
+
+You can add lines to connect the points.
+
+```{r}
+ggplot()+
+  geom_point(data=result,aes(x=yearID,y=HR))+
+  geom_line(data=result,aes(x=yearID,y=HR))
+```
+
+Next step is to add the Titles.
+
+```{r}
+ggplot()+
+  geom_point(data=result,aes(x=yearID,y=HR))+
+  geom_line(data=result,aes(x=yearID,y=HR))+
+  ggtitle("Ruth's Homerun Totals Throughout the Years")+
+  xlab("year")+
+  ylab("homeruns")
+```
+
+If you don't want the points to be on the graph , you can remove them by 'pounding them out'. This means that you simply place a # sign in front of the command line for the points.
+
+```{r}
+ggplot()+
+  #geom_point(data=result,aes(x=yearID,y=HR))+
+  geom_line(data=result,aes(x=yearID,y=HR))+
+  ggtitle("Ruth's Homerun Totals Throughout the Years")+
+  xlab("year")+
+  ylab("homeruns")
+```
+

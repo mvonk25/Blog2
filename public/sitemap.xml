@@ -3,53 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/data-visualization-bar-plots/</loc>
+    <loc>/post/fahrenheit-451-by-ray-bradbury/</loc>
+    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/r/data-visualization-bar-plots/</loc>
     <lastmod>2017-10-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/data-visualization-dashboard/</loc>
+    <loc>/post/r/data-visualization-dashboard/</loc>
     <lastmod>2017-10-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/the-shadowhunter-chronicles-by-cassandra-clare/</loc>
+    <loc>/post/series/the-shadowhunter-chronicles-by-cassandra-clare/</loc>
     <lastmod>2017-10-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/history-girls-by-adele-geras/</loc>
+    <loc>/post/series/history-girls-by-adele-geras/</loc>
     <lastmod>2017-10-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/a-walk-to-remember-by-nicholas-sparks/</loc>
+    <loc>/post/novels/a-walk-to-remember-by-nicholas-sparks/</loc>
     <lastmod>2017-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/data-visualization-histograms/</loc>
+    <loc>/post/r/data-visualization-histograms/</loc>
     <lastmod>2017-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/data-visualization-time-series/</loc>
+    <loc>/post/r/data-visualization-time-series/</loc>
     <lastmod>2017-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/data-visualization-scatter-plots/</loc>
+    <loc>/post/r/data-visualization-scatter-plots/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/kate-daniels-by-illona-andrews/</loc>
+    <loc>/post/series/kate-daniels-by-illona-andrews/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2017-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -65,8 +70,20 @@
   </url>
   
   <url>
+    <loc>/tags/classic/</loc>
+    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/drama/</loc>
     <lastmod>2017-10-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/dystopia/</loc>
+    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -84,13 +101,13 @@
   
   <url>
     <loc>/categories/novel/</loc>
-    <lastmod>2017-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2017-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -103,6 +120,12 @@
   <url>
     <loc>/tags/romance/</loc>
     <lastmod>2017-10-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/science-fiction/</loc>
+    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
