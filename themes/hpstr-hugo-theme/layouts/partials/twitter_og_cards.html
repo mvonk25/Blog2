@@ -1,5 +1,5 @@
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="{{ .Title }}">
+<!-- <meta name="twitter:title" content="{{ .Title }}">
 <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ $.Site.Params.subtitle }}{{ end }}">
 {{ with .Site.Params.owner.twitter }}<meta name="twitter:creator" content="{{ . }}">{{ end }}
 {{ if isset ($.Scratch.Get "Params") "image" }}
@@ -9,12 +9,12 @@
         <meta name="twitter:image" content="{{ . | absURL }}">
     {{ else }}
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:image" content="{{ $imageparams.feature | absURL }}">
-    {{ end }}
-{{ end }}
+        <meta name="twitter:image" content="{{ $imageparams.feature | absURL }}"> -->
+   <!--  {{ end }}
+{{ end }} -->
 
 <!-- Open Graph -->
-<meta property="og:type" content="article">
+<!-- <meta property="og:type" content="article">
 <meta property="og:title" content="{{ .Title }}">
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ $.Site.Params.subtitle }}{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
@@ -26,4 +26,4 @@
 {{ end }}
 {{ if not .Date.IsZero }}
   <meta property="og:updated_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}"/>
-{{ end }}
+{{ end }} -->
