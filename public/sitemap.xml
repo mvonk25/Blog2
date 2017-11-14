@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/a-matter-of-magic-by-patricia-c-wrede/</loc>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/because-of-winn-dixie-by-kate-dicamillo/</loc>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/robin-lady-of-legend-by-r-m-arcejaeger/</loc>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/the-last-of-the-mohicans-by-james-fenimore-cooper/</loc>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/the-princess-bride-by-william-goldman/</loc>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/series/the-land-of-elyon-series-by-patrick-carman/</loc>
     <lastmod>2017-11-13T00:00:00+00:00</lastmod>
   </url>
@@ -59,7 +84,13 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2017-11-13T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/adventure/</loc>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -76,7 +107,7 @@
   
   <url>
     <loc>/tags/classic/</loc>
-    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -94,25 +125,37 @@
   
   <url>
     <loc>/tags/fantasy-fiction/</loc>
-    <lastmod>2017-11-13T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/fiction/</loc>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/historical-fiction/</loc>
-    <lastmod>2017-10-03T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/mystery/</loc>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/novel/</loc>
-    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2017-11-13T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -124,7 +167,7 @@
   
   <url>
     <loc>/tags/romance/</loc>
-    <lastmod>2017-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -148,7 +191,7 @@
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2017-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -6,10 +6,19 @@
     <description>Recent content in Tags on A Bookworm&#39;s Paradise</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 08 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Adventure</title>
+      <link>/tags/adventure/</link>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/adventure/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Chart</title>
@@ -23,7 +32,7 @@
     <item>
       <title>Classic</title>
       <link>/tags/classic/</link>
-      <pubDate>Mon, 09 Oct 2017 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/classic/</guid>
       <description></description>
@@ -50,25 +59,43 @@
     <item>
       <title>Fantasy Fiction</title>
       <link>/tags/fantasy-fiction/</link>
-      <pubDate>Mon, 13 Nov 2017 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/fantasy-fiction/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Fiction</title>
+      <link>/tags/fiction/</link>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/fiction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Historical Fiction</title>
       <link>/tags/historical-fiction/</link>
-      <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/historical-fiction/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Mystery</title>
+      <link>/tags/mystery/</link>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/mystery/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Romance</title>
       <link>/tags/romance/</link>
-      <pubDate>Sun, 08 Oct 2017 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/romance/</guid>
       <description></description>
