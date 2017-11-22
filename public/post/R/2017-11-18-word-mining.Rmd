@@ -1,0 +1,93 @@
+---
+title: Word Mining
+author: Molly Vonk
+date: '2017-11-18'
+slug: word-mining
+categories:
+  - R
+tags:
+  - Visualization
+---
+
+####After downloading the package tm and the following packages:
+
+```{r message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidytext)
+library(wordcloud)
+library(wordcloud2)
+```
+
+####The first step is to open a new folder on your desktop and connect it to RStudio, so that all files and pictures saved will be in the same folder.
+
+####The next step is to copy and paste the speech, song, or book that you will be using into an R Text file. For this example I will be using President Trump's 2017 State of the Union Address speech. I saved the text file as trump.txt.
+
+####The next step is to open a new R Script file. For my example I saved it as trump.R. Now in the R script file you will command R to scan the text file in order to collect all of the words used into a data set. Type the following command:
+
+scan('trump.txt',what=character(),sep='\n')
+
+####After running this, you will want to save the data by adding:
+
+trump_scan<-scan('trump.txt',what=character(),sep='\n')
+
+####The next step is to frame the data that R scanned from the text file. Look in the Console, it should list how many lines of data there are. You will need this number pair for the next command, which is for my example:
+
+data_frame(lines=1:85,text=trump_scan)
+
+####After running this, once again, you will want to save this data set. For my example I will be saving it as:
+
+trump_lines<-data_frame(lines=1:85,text=trump_scan)
+
+#####The next step is to tidy up the data set by organizing the data into sepecific columns. You will use the following command:
+
+unnest_tokens(trump_lines,word,text)
+
+####After running this, save the new organized data. For my example, set it as:
+
+trump_words<-unnest_tokens(trump_lines,word,text)
+
+####The next step is to filter out the words you don't want to appear from your data set. For this example I will be filtering out the so called 'boring' words, such as 'and', 'the', 'a', etc. This is done by simply adding an '!' to the command code. Without the '!' the command would filter out unique words such as 'america', 'downtown', 'people', etc.
+
+trump_words%>%
+  filter(!(word %in% stop_words$word))
+
+####After running this, once again save the updated data set. For my example it will be:
+
+trump_words<-trump_words%>%
+  filter(!(word %in% stop_words$word))
+
+####The next step is to group the words together and have RStudio count and summarize the frequency of each word use. The command for this using my exmaple is:
+
+trump_words%>%
+  group_by(word)%>%
+  summarize(freq=n())
+
+####After running this, you will once again want to safe your progress. Fro my example it will be once again:
+
+trump_words<-trump_words%>%
+  group_by(word)%>%
+  summarize(freq=n())
+
+####Now that the data set is tidy and organized, you can now run the data through either wordcloud or wordcloud2 in order to produce the picture that you want. The package, wordcloud, will focus on the most used words and will only appear in black and white. Where as the package, wordcloud2, will use all words and will appear in multiple different colors. 
+
+####The command for wordcloud is:
+
+wordcloud(trump_words$word,trump_words$freq)
+
+####The basic command for wordcloud2 is:
+
+wordcloud2(trump_words)
+
+####With wordcloud2, you can do more advanced things. Such as, you can specify the background color and the color of all the words by adding:
+
+wordcloud2(trump_words,backgroundColor='gray',color='purple')
+
+####You can also use figPath, to command RStudio to organize the words following a specific picture impression. For my example I took a simple black and white impression and trump. Note: you will need to save whatever picture you use to the folder you created on your desktop before you type this command. 
+
+####My example looks like this:
+
+wordcloud2(trump_words,figPath='trump.png',backgroundColor='black',color='gray')
+
+## Final Results From Example
+
+<img src="Trump_pic.png"/>

@@ -6,10 +6,59 @@
     <description>Recent content in Visualization on A Bookworm&#39;s Paradise</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 08 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 18 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/visualization/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using RStudio: Aggregation</title>
+      <link>/post/r/using-rstudio-aggregation/</link>
+      <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r/using-rstudio-aggregation/</guid>
+      <description>AggregationWith SQL, you can squash the charts down into a more defined listing or even a single record. This is done with the GROUP BY command combined with a few other commands to specify specifically what you want to do with the data. You can use the command sum to find the total of the data, the command avg to find the average of the data, the command max to find the maximum of the data, and the command min to find the minimum of the data.</description>
+    </item>
+    
+    <item>
+      <title>Using RStudio: Filtering Columns and Rows</title>
+      <link>/post/r/using-rstudio-filtering-columns-and-rows/</link>
+      <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r/using-rstudio-filtering-columns-and-rows/</guid>
+      <description>Filtering Columns and RowsWith SQL, you can filter columns and rows by using SELECT and WHERE. Let’s look at an example using the Lahman database. So we should first load that database, along with the package sqldf.
+library(Lahman)library(sqldf)Suppose now you would like to see the home run totals for the 1927 Yankees. You could write the following query:
+query&amp;lt;-&amp;quot;SELECT playerID,yearID,teamID,HR FROM Batting WHERE teamID=&amp;#39;NYA&amp;#39; and yearID=1927&amp;quot;sqldf(query)## playerID yearID teamID HR## 1 beallwa01 1927 NYA 0## 2 bengobe01 1927 NYA 0## 3 collipa01 1927 NYA 7## 4 combsea01 1927 NYA 6## 5 duganjo01 1927 NYA 2## 6 durstce01 1927 NYA 0## 7 gazelmi01 1927 NYA 0## 8 gehrilo01 1927 NYA 47## 9 giardjo01 1927 NYA 0## 10 grabojo01 1927 NYA 0## 11 hoytwa01 1927 NYA 0## 12 koenima01 1927 NYA 3## 13 lazzeto01 1927 NYA 18## 14 meusebo01 1927 NYA 8## 15 moorewi01 1927 NYA 1## 16 morehra01 1927 NYA 1## 17 paschbe01 1927 NYA 2## 18 pennohe01 1927 NYA 0## 19 pipgrge01 1927 NYA 1## 20 ruethdu01 1927 NYA 1## 21 ruthba01 1927 NYA 60## 22 shawkbo01 1927 NYA 0## 23 shockur01 1927 NYA 0## 24 thomamy01 1927 NYA 0## 25 weraju01 1927 NYA 1Here are a few examples of filtering columns and rows using the Lahman database.</description>
+    </item>
+    
+    <item>
+      <title>Using RStudio: Joining Tables Together</title>
+      <link>/post/r/using-rstudio-joining-tables-together/</link>
+      <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r/using-rstudio-joining-tables-together/</guid>
+      <description>JoinsAlso with SQL you can join together multiple charts. This is done with the command INNER JOIN and the name of the chart. It is important to be specific about which table you want to join together; You must eliminate all ambiguity. This means that if there are any columns that appear in multiple charts, then you must specify which column from what table you want to see. You do this by specifying what columns will overlap with the command ON table name.</description>
+    </item>
+    
+    <item>
+      <title>Using RStudio: Ordering the Information</title>
+      <link>/post/r/using-rstudio-ordering-the-information/</link>
+      <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r/using-rstudio-ordering-the-information/</guid>
+      <description>ORDER BYWith SQL, you can order the rows of your output. To order the information, you use the ORDER BY command. This command is set with the default to order the information in ascending order, from smallest to largest. To order the information in descending order, simply enter the command DESC after the ORDER BY command.
+You will need the following packages:
+library(Lahman)library(sqldf)Here are a few examples of using the ORDER BY command.</description>
+    </item>
+    
+    <item>
+      <title>Word Mining</title>
+      <link>/post/r/word-mining/</link>
+      <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r/word-mining/</guid>
+      <description>After downloading the package tm and the following packages:library(dplyr)library(tidytext)library(wordcloud)library(wordcloud2)The first step is to open a new folder on your desktop and connect it to RStudio, so that all files and pictures saved will be in the same folder.The next step is to copy and paste the speech, song, or book that you will be using into an R Text file. For this example I will be using President Trump’s 2017 State of the Union Address speech.</description>
+    </item>
     
     <item>
       <title>Data Visualization: Bar Plots</title>

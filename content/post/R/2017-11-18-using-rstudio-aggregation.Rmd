@@ -1,0 +1,73 @@
+---
+title: 'Using RStudio: Aggregation'
+author: Molly Vonk
+date: '2017-11-18'
+slug: using-rstudio-aggregation
+categories:
+  - R
+tags:
+  - Chart
+  - Visualization
+---
+
+## Aggregation
+
+With SQL, you can squash the charts down into a more defined listing or even a single record. This is done with the GROUP BY command combined with a few other commands to specify specifically what you want to do with the data. You can use the command sum to find the total of the data, the command avg to find the average of the data, the command max to find the maximum of the data, and the command min to find the minimum of the data.
+
+You will need the following packages:
+
+```{r message=FALSE, warning=FALSE}
+library(Lahman)
+library(sqldf)
+```
+
+Here are some examples using GROUP BY command and the different Aggregation commands.
+
+##### Example 1: Using Sum
+
+For instance, suppose you want to find Babe Ruth's career home run total. We could do the following:
+
+```{r}
+query<-"SELECT playerID,sum(HR) 
+FROM Batting 
+WHERE playerID='ruthba01' 
+GROUP BY playerID"
+
+sqldf(query)
+```
+
+Here are a few more examples of using the GROUP BY command using the Lahman database.
+
+##### Example 2: Using Sum
+
+Find all the career home run totals for all players, but limit the output to totals from 600 or more. Order by career total from largest to smallest on the chart.
+
+```{r}
+query<-"SELECT playerID,sum(HR) 
+FROM Batting 
+GROUP BY playerID 
+HAVING sum(HR)>=600 
+ORDER BY sum(HR) DESC"
+
+sqldf(query)
+```
+
+As you can see in the above chart, the answer is 8 players.
+
+It is important to note that when GROUP BY command comes right after the FROM command, then the WHERE command is changed to the HAVING command. WHERE and HAVING commands do the same things, but which command to use is dependent on its placement in the command string.
+
+##### Example 3: Using Average
+
+Find all the players who have averaged more than 30 home runs per year throughout their career. Let's order by having the highest average at the top of the chart.
+
+```{r}
+query<-"SELECT playerID,avg(HR) 
+FROM Batting 
+GROUP BY playerID 
+HAVING avg(HR)>30 
+ORDER BY avg(HR) DESC"
+
+sqldf(query)
+```
+
+As you can see in the above chart, the answer is 13 players.

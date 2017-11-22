@@ -1,0 +1,92 @@
+---
+title: Word Mining
+author: Molly Vonk
+date: '2017-11-18'
+slug: word-mining
+categories:
+  - R
+tags:
+  - Visualization
+---
+
+
+
+<div id="after-downloading-the-package-tm-and-the-following-packages" class="section level4">
+<h4>After downloading the package tm and the following packages:</h4>
+<pre class="r"><code>library(dplyr)
+library(tidytext)
+library(wordcloud)
+library(wordcloud2)</code></pre>
+</div>
+<div id="the-first-step-is-to-open-a-new-folder-on-your-desktop-and-connect-it-to-rstudio-so-that-all-files-and-pictures-saved-will-be-in-the-same-folder." class="section level4">
+<h4>The first step is to open a new folder on your desktop and connect it to RStudio, so that all files and pictures saved will be in the same folder.</h4>
+</div>
+<div id="the-next-step-is-to-copy-and-paste-the-speech-song-or-book-that-you-will-be-using-into-an-r-text-file.-for-this-example-i-will-be-using-president-trumps-2017-state-of-the-union-address-speech.-i-saved-the-text-file-as-trump.txt." class="section level4">
+<h4>The next step is to copy and paste the speech, song, or book that you will be using into an R Text file. For this example I will be using President Trump’s 2017 State of the Union Address speech. I saved the text file as trump.txt.</h4>
+</div>
+<div id="the-next-step-is-to-open-a-new-r-script-file.-for-my-example-i-saved-it-as-trump.r.-now-in-the-r-script-file-you-will-command-r-to-scan-the-text-file-in-order-to-collect-all-of-the-words-used-into-a-data-set.-type-the-following-command" class="section level4">
+<h4>The next step is to open a new R Script file. For my example I saved it as trump.R. Now in the R script file you will command R to scan the text file in order to collect all of the words used into a data set. Type the following command:</h4>
+<p>scan(‘trump.txt’,what=character(),sep=‘’)</p>
+</div>
+<div id="after-running-this-you-will-want-to-save-the-data-by-adding" class="section level4">
+<h4>After running this, you will want to save the data by adding:</h4>
+<p>trump_scan&lt;-scan(‘trump.txt’,what=character(),sep=‘’)</p>
+</div>
+<div id="the-next-step-is-to-frame-the-data-that-r-scanned-from-the-text-file.-look-in-the-console-it-should-list-how-many-lines-of-data-there-are.-you-will-need-this-number-pair-for-the-next-command-which-is-for-my-example" class="section level4">
+<h4>The next step is to frame the data that R scanned from the text file. Look in the Console, it should list how many lines of data there are. You will need this number pair for the next command, which is for my example:</h4>
+<p>data_frame(lines=1:85,text=trump_scan)</p>
+</div>
+<div id="after-running-this-once-again-you-will-want-to-save-this-data-set.-for-my-example-i-will-be-saving-it-as" class="section level4">
+<h4>After running this, once again, you will want to save this data set. For my example I will be saving it as:</h4>
+<p>trump_lines&lt;-data_frame(lines=1:85,text=trump_scan)</p>
+<div id="the-next-step-is-to-tidy-up-the-data-set-by-organizing-the-data-into-sepecific-columns.-you-will-use-the-following-command" class="section level5">
+<h5>The next step is to tidy up the data set by organizing the data into sepecific columns. You will use the following command:</h5>
+<p>unnest_tokens(trump_lines,word,text)</p>
+</div>
+</div>
+<div id="after-running-this-save-the-new-organized-data.-for-my-example-set-it-as" class="section level4">
+<h4>After running this, save the new organized data. For my example, set it as:</h4>
+<p>trump_words&lt;-unnest_tokens(trump_lines,word,text)</p>
+</div>
+<div id="the-next-step-is-to-filter-out-the-words-you-dont-want-to-appear-from-your-data-set.-for-this-example-i-will-be-filtering-out-the-so-called-boring-words-such-as-and-the-a-etc.-this-is-done-by-simply-adding-an-to-the-command-code.-without-the-the-command-would-filter-out-unique-words-such-as-america-downtown-people-etc." class="section level4">
+<h4>The next step is to filter out the words you don’t want to appear from your data set. For this example I will be filtering out the so called ‘boring’ words, such as ‘and’, ‘the’, ‘a’, etc. This is done by simply adding an ‘!’ to the command code. Without the ‘!’ the command would filter out unique words such as ‘america’, ‘downtown’, ‘people’, etc.</h4>
+<p>trump_words%&gt;% filter(!(word %in% stop_words$word))</p>
+</div>
+<div id="after-running-this-once-again-save-the-updated-data-set.-for-my-example-it-will-be" class="section level4">
+<h4>After running this, once again save the updated data set. For my example it will be:</h4>
+<p>trump_words&lt;-trump_words%&gt;% filter(!(word %in% stop_words$word))</p>
+</div>
+<div id="the-next-step-is-to-group-the-words-together-and-have-rstudio-count-and-summarize-the-frequency-of-each-word-use.-the-command-for-this-using-my-exmaple-is" class="section level4">
+<h4>The next step is to group the words together and have RStudio count and summarize the frequency of each word use. The command for this using my exmaple is:</h4>
+<p>trump_words%&gt;% group_by(word)%&gt;% summarize(freq=n())</p>
+</div>
+<div id="after-running-this-you-will-once-again-want-to-safe-your-progress.-fro-my-example-it-will-be-once-again" class="section level4">
+<h4>After running this, you will once again want to safe your progress. Fro my example it will be once again:</h4>
+<p>trump_words&lt;-trump_words%&gt;% group_by(word)%&gt;% summarize(freq=n())</p>
+</div>
+<div id="now-that-the-data-set-is-tidy-and-organized-you-can-now-run-the-data-through-either-wordcloud-or-wordcloud2-in-order-to-produce-the-picture-that-you-want.-the-package-wordcloud-will-focus-on-the-most-used-words-and-will-only-appear-in-black-and-white.-where-as-the-package-wordcloud2-will-use-all-words-and-will-appear-in-multiple-different-colors." class="section level4">
+<h4>Now that the data set is tidy and organized, you can now run the data through either wordcloud or wordcloud2 in order to produce the picture that you want. The package, wordcloud, will focus on the most used words and will only appear in black and white. Where as the package, wordcloud2, will use all words and will appear in multiple different colors.</h4>
+</div>
+<div id="the-command-for-wordcloud-is" class="section level4">
+<h4>The command for wordcloud is:</h4>
+<p>wordcloud(trump_words<span class="math inline">\(word,trump_words\)</span>freq)</p>
+</div>
+<div id="the-basic-command-for-wordcloud2-is" class="section level4">
+<h4>The basic command for wordcloud2 is:</h4>
+<p>wordcloud2(trump_words)</p>
+</div>
+<div id="with-wordcloud2-you-can-do-more-advanced-things.-such-as-you-can-specify-the-background-color-and-the-color-of-all-the-words-by-adding" class="section level4">
+<h4>With wordcloud2, you can do more advanced things. Such as, you can specify the background color and the color of all the words by adding:</h4>
+<p>wordcloud2(trump_words,backgroundColor=‘gray’,color=‘purple’)</p>
+</div>
+<div id="you-can-also-use-figpath-to-command-rstudio-to-organize-the-words-following-a-specific-picture-impression.-for-my-example-i-took-a-simple-black-and-white-impression-and-trump.-note-you-will-need-to-save-whatever-picture-you-use-to-the-folder-you-created-on-your-desktop-before-you-type-this-command." class="section level4">
+<h4>You can also use figPath, to command RStudio to organize the words following a specific picture impression. For my example I took a simple black and white impression and trump. Note: you will need to save whatever picture you use to the folder you created on your desktop before you type this command.</h4>
+</div>
+<div id="my-example-looks-like-this" class="section level4">
+<h4>My example looks like this:</h4>
+<p>wordcloud2(trump_words,figPath=‘trump.png’,backgroundColor=‘black’,color=‘gray’)</p>
+</div>
+<div id="final-results-from-example" class="section level2">
+<h2>Final Results From Example</h2>
+<p><img src="Trump_pic.png"/></p>
+</div>

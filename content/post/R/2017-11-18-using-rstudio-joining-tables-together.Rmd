@@ -1,0 +1,97 @@
+---
+title: 'Using RStudio: Joining Tables Together'
+author: Molly Vonk
+date: '2017-11-18'
+slug: using-rstudio-joining-tables-together
+categories:
+  - R
+tags:
+  - Chart
+  - Visualization
+---
+
+## Joins
+
+Also with SQL you can join together multiple charts. This is done with the command INNER JOIN and the name of the chart. It is important to be specific about which table you want to join together; You must eliminate all ambiguity. This means that if there are any columns that appear in multiple charts, then you must specify which column from what table you want to see. You do this by specifying what columns will overlap with the command ON table name.column name=other table name.column name. You can find out if tables have the same column name by individually checking each table using colnames(table name) to see all the column names for that specific table.
+
+You will need the following packages:
+
+```{r message=FALSE, warning=FALSE}
+library(Lahman)
+library(sqldf)
+```
+
+Here are some examples of using the INNER JOIN command.
+
+##### Example 1: Using Master Table
+
+Join together Master table with Batting table. Find all instances of Babe Ruth hitting home runs.
+
+```{r}
+query<-"SELECT nameFirst,nameLast,teamID,yearID,HR
+FROM Batting
+INNER JOIN Master
+ON Batting.playerID=MAster.playerID
+WHERE Batting.playerID='ruthba01'"
+
+sqldf(query)
+```
+
+As you can see in the above chart, the answer is 22 instances.
+
+##### Example 2: Using Master Table and Salaries Table
+
+Find all instances of players with the first name Bob who averaged more than 1 million dollars in salary over their career. Include first and last names and order from largest to smallest.
+
+```{r}
+query<-"SELECT nameFirst,nameLast,avg(salary)
+FROM Master
+INNER JOIN Salaries
+ON Master.playerID=Salaries.playerID
+WHERE nameFirst='Bob'
+GROUP BY Salaries.playerID
+HAVING avg(salary)>1000000
+ORDER BY avg(salary) DESC"
+
+sqldf(query)
+```
+
+As you can see in the chart above, the answer is 8 players.
+
+One helpful trick is that it's sometimes easier to write out commands you need from one table first and then worry about what you need from the other table.
+
+##### Example 3: Using Teams Table
+
+Join together Teams table with Batting table. Find all instances of Babe Ruth hitting home runs and the team name for each instance.
+
+```{r}
+query<-"SELECT playerID,name,Batting.yearID,Batting.HR
+FROM Batting
+INNER JOIN Teams
+ON Batting.teamID=Teams.teamID and Batting.yearID=Teams.yearID
+WHERE playerID='ruthba01'"
+
+sqldf(query)
+```
+
+As you can see in the above chart, the answer is 22 instances.
+
+It is important to note that in the SELECT line it was necessary to specify that yearID and HR came from the Batting table.
+
+##### Example 4: Joining Together 3 Tables
+
+Join together Master table, Batting table, and Teams table. Find instances of Babe Ruth hitting home runs, with his first and last name and the team names.
+
+```{r}
+query<-"SELECT nameFirst,nameLast,name,Batting.yearID,Batting.HR
+FROM (Batting
+INNER JOIN Master
+ON Batting.playerID=Master.playerID)
+INNER JOIN Teams
+ON Batting.teamID=Teams.teamID AND Batting.yearID=Teams.yearID
+WHERE Batting.playerID='ruthba01'"
+
+sqldf(query)
+```
+
+As you can see in the chart above, the answer is 22 instances.

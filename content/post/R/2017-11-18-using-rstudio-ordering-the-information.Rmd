@@ -1,0 +1,72 @@
+---
+title: 'Using RStudio: Ordering the Information'
+author: Molly Vonk
+date: '2017-11-18'
+slug: using-rstudio-ordering-the-information
+categories:
+  - R
+tags:
+  - Chart
+  - Visualization
+---
+
+## ORDER BY
+
+With SQL, you can order the rows of your output. To order the information, you use the ORDER BY command. This command is set with the default to order the information in ascending order, from smallest to largest. To order the information in descending order, simply enter the command DESC after the ORDER BY command.
+
+You will need the following packages:
+
+```{r message=FALSE, warning=FALSE}
+library(Lahman)
+library(sqldf)
+```
+
+Here are a few examples of using the ORDER BY command.
+
+##### Example 1:
+
+For instance, suppose you want to see every instance of a player hitting more than 50 home runs. But you would like the players with the most home runs to be at the top. We could do the following:
+
+```{r}
+query<-"SELECT playerID,teamID,yearID,HR
+FROM Batting 
+WHERE HR>50
+ORDER BY HR DESC"
+
+sqldf(query)
+```
+
+As you can see in the above chart, the answer is 36 instances.
+
+Here is another example of using the ORDER BY command using the Lahman database. 
+
+##### Example 2:
+
+Find all instances of a player striking out less than 10 times. Make sure each player has had at least 400 at-bats (AB). Order by having the least strikeouts at the top.
+
+```{r}
+query<-"SELECT playerID,teamID,yearID,SO,AB 
+FROM Batting 
+WHERE SO<10 and AB>=400 
+ORDER BY SO"
+
+sqldf(query)
+```
+
+As you can see in the chart above, the answer is 65 instances.
+
+##### Example 3:
+
+Find all instances of players hitting a career home run total of at least 600 home runs. Order by the highest home run totals at the top.
+
+```{r}
+query<-"SELECT playerID,teamID,yearID,sum(HR)
+FROM Batting
+GROUP BY playerID
+HAVING sum(HR)>=600
+ORDER BY sum(HR) DESC"
+
+sqldf(query)
+```
+
+As you can see in the above chart, the answer is 8 players.

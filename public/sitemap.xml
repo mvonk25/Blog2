@@ -3,27 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/a-matter-of-magic-by-patricia-c-wrede/</loc>
+    <loc>/post/r/using-rstudio-aggregation/</loc>
+    <lastmod>2017-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/r/using-rstudio-filtering-columns-and-rows/</loc>
+    <lastmod>2017-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/r/using-rstudio-joining-tables-together/</loc>
+    <lastmod>2017-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/r/using-rstudio-ordering-the-information/</loc>
+    <lastmod>2017-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/r/word-mining/</loc>
+    <lastmod>2017-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/novels/a-matter-of-magic-by-patricia-c-wrede/</loc>
     <lastmod>2017-11-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/because-of-winn-dixie-by-kate-dicamillo/</loc>
+    <loc>/post/novels/because-of-winn-dixie-by-kate-dicamillo/</loc>
     <lastmod>2017-11-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/robin-lady-of-legend-by-r-m-arcejaeger/</loc>
+    <loc>/post/novels/robin-lady-of-legend-by-r-m-arcejaeger/</loc>
     <lastmod>2017-11-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/the-last-of-the-mohicans-by-james-fenimore-cooper/</loc>
+    <loc>/post/novels/the-last-of-the-mohicans-by-james-fenimore-cooper/</loc>
     <lastmod>2017-11-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/the-princess-bride-by-william-goldman/</loc>
+    <loc>/post/novels/the-princess-bride-by-william-goldman/</loc>
     <lastmod>2017-11-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -84,7 +109,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -101,7 +126,7 @@
   
   <url>
     <loc>/tags/chart/</loc>
-    <lastmod>2017-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -155,13 +180,13 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2017-11-14T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/r/</loc>
-    <lastmod>2017-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -197,7 +222,7 @@
   
   <url>
     <loc>/tags/visualization/</loc>
-    <lastmod>2017-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

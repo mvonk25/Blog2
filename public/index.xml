@@ -6,37 +6,86 @@
     <description>Recent content on A Bookworm&#39;s Paradise</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 14 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 18 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Using RStudio: Aggregation</title>
+      <link>/post/r/using-rstudio-aggregation/</link>
+      <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r/using-rstudio-aggregation/</guid>
+      <description>AggregationWith SQL, you can squash the charts down into a more defined listing or even a single record. This is done with the GROUP BY command combined with a few other commands to specify specifically what you want to do with the data. You can use the command sum to find the total of the data, the command avg to find the average of the data, the command max to find the maximum of the data, and the command min to find the minimum of the data.</description>
+    </item>
+    
+    <item>
+      <title>Using RStudio: Filtering Columns and Rows</title>
+      <link>/post/r/using-rstudio-filtering-columns-and-rows/</link>
+      <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r/using-rstudio-filtering-columns-and-rows/</guid>
+      <description>Filtering Columns and RowsWith SQL, you can filter columns and rows by using SELECT and WHERE. Let’s look at an example using the Lahman database. So we should first load that database, along with the package sqldf.
+library(Lahman)library(sqldf)Suppose now you would like to see the home run totals for the 1927 Yankees. You could write the following query:
+query&amp;lt;-&amp;quot;SELECT playerID,yearID,teamID,HR FROM Batting WHERE teamID=&amp;#39;NYA&amp;#39; and yearID=1927&amp;quot;sqldf(query)## playerID yearID teamID HR## 1 beallwa01 1927 NYA 0## 2 bengobe01 1927 NYA 0## 3 collipa01 1927 NYA 7## 4 combsea01 1927 NYA 6## 5 duganjo01 1927 NYA 2## 6 durstce01 1927 NYA 0## 7 gazelmi01 1927 NYA 0## 8 gehrilo01 1927 NYA 47## 9 giardjo01 1927 NYA 0## 10 grabojo01 1927 NYA 0## 11 hoytwa01 1927 NYA 0## 12 koenima01 1927 NYA 3## 13 lazzeto01 1927 NYA 18## 14 meusebo01 1927 NYA 8## 15 moorewi01 1927 NYA 1## 16 morehra01 1927 NYA 1## 17 paschbe01 1927 NYA 2## 18 pennohe01 1927 NYA 0## 19 pipgrge01 1927 NYA 1## 20 ruethdu01 1927 NYA 1## 21 ruthba01 1927 NYA 60## 22 shawkbo01 1927 NYA 0## 23 shockur01 1927 NYA 0## 24 thomamy01 1927 NYA 0## 25 weraju01 1927 NYA 1Here are a few examples of filtering columns and rows using the Lahman database.</description>
+    </item>
+    
+    <item>
+      <title>Using RStudio: Joining Tables Together</title>
+      <link>/post/r/using-rstudio-joining-tables-together/</link>
+      <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r/using-rstudio-joining-tables-together/</guid>
+      <description>JoinsAlso with SQL you can join together multiple charts. This is done with the command INNER JOIN and the name of the chart. It is important to be specific about which table you want to join together; You must eliminate all ambiguity. This means that if there are any columns that appear in multiple charts, then you must specify which column from what table you want to see. You do this by specifying what columns will overlap with the command ON table name.</description>
+    </item>
+    
+    <item>
+      <title>Using RStudio: Ordering the Information</title>
+      <link>/post/r/using-rstudio-ordering-the-information/</link>
+      <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r/using-rstudio-ordering-the-information/</guid>
+      <description>ORDER BYWith SQL, you can order the rows of your output. To order the information, you use the ORDER BY command. This command is set with the default to order the information in ascending order, from smallest to largest. To order the information in descending order, simply enter the command DESC after the ORDER BY command.
+You will need the following packages:
+library(Lahman)library(sqldf)Here are a few examples of using the ORDER BY command.</description>
+    </item>
+    
+    <item>
+      <title>Word Mining</title>
+      <link>/post/r/word-mining/</link>
+      <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r/word-mining/</guid>
+      <description>After downloading the package tm and the following packages:library(dplyr)library(tidytext)library(wordcloud)library(wordcloud2)The first step is to open a new folder on your desktop and connect it to RStudio, so that all files and pictures saved will be in the same folder.The next step is to copy and paste the speech, song, or book that you will be using into an R Text file. For this example I will be using President Trump’s 2017 State of the Union Address speech.</description>
+    </item>
+    
+    <item>
       <title>A Matter of Magic By: Patricia C. Wrede</title>
-      <link>/post/a-matter-of-magic-by-patricia-c-wrede/</link>
+      <link>/post/novels/a-matter-of-magic-by-patricia-c-wrede/</link>
       <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/a-matter-of-magic-by-patricia-c-wrede/</guid>
+      <guid>/post/novels/a-matter-of-magic-by-patricia-c-wrede/</guid>
       <description>Credited to https://www.goodreads.com/book/show/7278720-a-matter-of-magic
 SynopsisWhen a stranger offers her a small fortune to break into a traveling magician’s wagon, Kim doesn’t hesitate. Having grown up a waif in the dirty streets of London, Kim isn’t above a bit of breaking-and-entering. A hard life and lean times have schooled her in one lesson: steal from them before they steal from you. But when the magician catches her in the act, Kim thinks she’s done for.</description>
     </item>
     
     <item>
       <title>Because of Winn-Dixie By: Kate DiCamillo</title>
-      <link>/post/because-of-winn-dixie-by-kate-dicamillo/</link>
+      <link>/post/novels/because-of-winn-dixie-by-kate-dicamillo/</link>
       <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/because-of-winn-dixie-by-kate-dicamillo/</guid>
+      <guid>/post/novels/because-of-winn-dixie-by-kate-dicamillo/</guid>
       <description>Credited to https://www.goodreads.com/book/show/357664.Because_of_Winn_Dixie
 SynopsisThe summer Opal and her father, the preacher, move to Naomi, Florida, Opal goes into the Winn-Dixie supermarket–and comes out with a dog. A big, ugly, suffering dog with a sterling sense of humor. A dog she dubs Winn-Dixie. Because of Winn-Dixie, the preacher tells Opal ten things about her absent mother, one for each year Opal has been alive. Winn-Dixie is better at making friends than anyone Opal has ever known, and together they meet the local librarian, Miss Franny Block, who once fought off a bear with a copy of WAR AND PEACE.</description>
     </item>
     
     <item>
       <title>Robin: Lady of Legend By: R.M. ArceJaeger </title>
-      <link>/post/robin-lady-of-legend-by-r-m-arcejaeger/</link>
+      <link>/post/novels/robin-lady-of-legend-by-r-m-arcejaeger/</link>
       <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/robin-lady-of-legend-by-r-m-arcejaeger/</guid>
+      <guid>/post/novels/robin-lady-of-legend-by-r-m-arcejaeger/</guid>
       <description>Credited to https://www.goodreads.com/book/show/13410938-robin
 SynopsisWhat if Robin Hood wasn’t the man you thought him to be-what if he wasn’t a man at all?
 Robin of Locksley is young, headstrong, and about to receive the worst birthday present of her life. Still struggling to define herself in a society that believes women are fit for little more than governing a household and bearing children, she balks at her father’s plans for her future, but the consequences of her rebellion prove deadly.</description>
@@ -44,20 +93,20 @@ Robin of Locksley is young, headstrong, and about to receive the worst birthday 
     
     <item>
       <title>The Last of the Mohicans By: James Fenimore Cooper</title>
-      <link>/post/the-last-of-the-mohicans-by-james-fenimore-cooper/</link>
+      <link>/post/novels/the-last-of-the-mohicans-by-james-fenimore-cooper/</link>
       <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/the-last-of-the-mohicans-by-james-fenimore-cooper/</guid>
+      <guid>/post/novels/the-last-of-the-mohicans-by-james-fenimore-cooper/</guid>
       <description>Credited to https://www.goodreads.com/book/show/38296.The_Last_of_the_Mohicans
 SynopsisDeep in the forests of upper New York State, the brave woodsman Hawkeye (Natty Bumppo) and his loyal Mohican friends Chingachgook and Uncas become embroiled in the bloody battles of the French and Indian War. The abduction of the beautiful Munro sisters by hostile savages, the treachery of the renegade brave Magua, the ambush of innocent settlers, and the thrilling events that lead to the final tragic confrontation between rival war parties create an unforgettable, spine-tingling picture of life on the frontier.</description>
     </item>
     
     <item>
       <title>The Princess Bride By: William Goldman</title>
-      <link>/post/the-princess-bride-by-william-goldman/</link>
+      <link>/post/novels/the-princess-bride-by-william-goldman/</link>
       <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/the-princess-bride-by-william-goldman/</guid>
+      <guid>/post/novels/the-princess-bride-by-william-goldman/</guid>
       <description>Credited to https://www.goodreads.com/book/show/21787.The_Princess_Bride
 SynopsisWhat happens when the most beautiful girl in the world marries the handsomest prince of all time and he turns out to be…well…a lot less than the man of her dreams?
 As a boy, William Goldman claims, he loved to hear his father read the S. Morgenstern classic, The Princess Bride. But as a grown-up he discovered that the boring parts were left out of good old Dad’s recitation, and only the “good parts” reached his ears.</description>

@@ -1,0 +1,155 @@
+---
+title: 'Using RStudio: Filtering Columns and Rows'
+author: Molly Vonk
+date: '2017-11-18'
+slug: using-rstudio-filtering-columns-and-rows
+categories:
+  - R
+tags:
+  - Chart
+  - Visualization
+---
+
+
+
+<div id="filtering-columns-and-rows" class="section level2">
+<h2>Filtering Columns and Rows</h2>
+<p>With SQL, you can filter columns and rows by using SELECT and WHERE. Let’s look at an example using the Lahman database. So we should first load that database, along with the package sqldf.</p>
+<pre class="r"><code>library(Lahman)
+library(sqldf)</code></pre>
+<p>Suppose now you would like to see the home run totals for the 1927 Yankees. You could write the following query:</p>
+<pre class="r"><code>query&lt;-&quot;SELECT playerID,yearID,teamID,HR 
+FROM Batting 
+WHERE teamID=&#39;NYA&#39; and yearID=1927&quot;
+
+sqldf(query)</code></pre>
+<pre><code>##     playerID yearID teamID HR
+## 1  beallwa01   1927    NYA  0
+## 2  bengobe01   1927    NYA  0
+## 3  collipa01   1927    NYA  7
+## 4  combsea01   1927    NYA  6
+## 5  duganjo01   1927    NYA  2
+## 6  durstce01   1927    NYA  0
+## 7  gazelmi01   1927    NYA  0
+## 8  gehrilo01   1927    NYA 47
+## 9  giardjo01   1927    NYA  0
+## 10 grabojo01   1927    NYA  0
+## 11  hoytwa01   1927    NYA  0
+## 12 koenima01   1927    NYA  3
+## 13 lazzeto01   1927    NYA 18
+## 14 meusebo01   1927    NYA  8
+## 15 moorewi01   1927    NYA  1
+## 16 morehra01   1927    NYA  1
+## 17 paschbe01   1927    NYA  2
+## 18 pennohe01   1927    NYA  0
+## 19 pipgrge01   1927    NYA  1
+## 20 ruethdu01   1927    NYA  1
+## 21  ruthba01   1927    NYA 60
+## 22 shawkbo01   1927    NYA  0
+## 23 shockur01   1927    NYA  0
+## 24 thomamy01   1927    NYA  0
+## 25  weraju01   1927    NYA  1</code></pre>
+<p>Here are a few examples of filtering columns and rows using the Lahman database. Remember you still need to first load the Lahman database, along with the package sqldf if you have restarted a new session on RStudio.</p>
+<div id="example-1" class="section level5">
+<h5>Example 1:</h5>
+<p>Find all instances where Yankees have hit 40 home runs or more.</p>
+<pre class="r"><code>query&lt;-&quot;SELECT playerID,yearID,teamID,HR
+FROM Batting
+WHERE teamID=&#39;NYA&#39; and HR&gt;=40&quot;
+
+sqldf(query)</code></pre>
+<pre><code>##     playerID yearID teamID HR
+## 1   ruthba01   1920    NYA 54
+## 2   ruthba01   1921    NYA 59
+## 3   ruthba01   1923    NYA 41
+## 4   ruthba01   1924    NYA 46
+## 5   ruthba01   1926    NYA 47
+## 6  gehrilo01   1927    NYA 47
+## 7   ruthba01   1927    NYA 60
+## 8   ruthba01   1928    NYA 54
+## 9   ruthba01   1929    NYA 46
+## 10 gehrilo01   1930    NYA 41
+## 11  ruthba01   1930    NYA 49
+## 12 gehrilo01   1931    NYA 46
+## 13  ruthba01   1931    NYA 46
+## 14  ruthba01   1932    NYA 41
+## 15 gehrilo01   1934    NYA 49
+## 16 gehrilo01   1936    NYA 49
+## 17 dimagjo01   1937    NYA 46
+## 18 mantlmi01   1956    NYA 52
+## 19 mantlmi01   1958    NYA 42
+## 20 mantlmi01   1960    NYA 40
+## 21 mantlmi01   1961    NYA 54
+## 22 marisro01   1961    NYA 61
+## 23 jacksre01   1980    NYA 41
+## 24 martiti02   1997    NYA 44
+## 25 giambja01   2002    NYA 41
+## 26 giambja01   2003    NYA 41
+## 27 rodrial01   2005    NYA 48
+## 28 rodrial01   2007    NYA 54
+## 29 grandcu01   2011    NYA 41
+## 30 grandcu01   2012    NYA 43</code></pre>
+<p>As you can see in the above chart, the answer is 30 instances.</p>
+</div>
+<div id="example-2" class="section level5">
+<h5>Example 2:</h5>
+<p>Find all instances where a player had more than 40 Home runs but less than 60 Strikeouts.</p>
+<pre class="r"><code>query&lt;-&quot;SELECT playerID,yearID,teamID,HR,SO 
+FROM Batting 
+WHERE HR&gt;40 and SO&lt;60&quot;
+
+sqldf(query)</code></pre>
+<pre><code>##     playerID yearID teamID HR SO
+## 1  hornsro01   1922    SLN 42 50
+## 2  willicy01   1923    PHI 41 57
+## 3    ottme01   1929    NY1 42 38
+## 4  gehrilo01   1931    NYA 46 56
+## 5   ruthba01   1931    NYA 46 51
+## 6  gehrilo01   1934    NYA 49 31
+## 7  gehrilo01   1936    NYA 49 46
+## 8  troskha01   1936    CLE 42 58
+## 9  dimagjo01   1937    NYA 46 37
+## 10  mizejo01   1940    SLN 43 49
+## 11  mizejo01   1947    NY1 51 42
+## 12 willite01   1949    BOS 43 48
+## 13 kinerra01   1951    PIT 42 57
+## 14 camparo01   1953    BRO 41 58
+## 15 rosenal01   1953    CLE 43 48
+## 16 kluszte01   1954    CIN 49 35
+## 17  mayswi01   1954    NY1 41 57
+## 18 kluszte01   1955    CIN 47 40
+## 19 aaronha01   1957    ML1 44 58
+## 20 sievero01   1957    WS1 42 55
+## 21 aaronha01   1969    ATL 44 47
+## 22 aaronha01   1971    ATL 47 58
+## 23 thomafr04   1993    CHA 41 54
+## 24 bondsba01   2002    SFN 46 47
+## 25 bondsba01   2003    SFN 45 58
+## 26 bondsba01   2004    SFN 45 41
+## 27 pujolal01   2004    SLN 46 52
+## 28 pujolal01   2006    SLN 49 50</code></pre>
+<p>As you can see in the above chart, the answer is 28 instances.</p>
+<p>It is important to note the changes in the query. SO was added to the SELECT list since you were looking for Strikeout data. Also since the example was for all teams, it was necessary to remove the teamID=‘NYA’. Also before running the new query, you must highlight the new query to specify that you want this new query run instead of the previous one.</p>
+</div>
+<div id="example-3" class="section level5">
+<h5>Example 3:</h5>
+<p>Find all instances of Phillies in the 1970s hitting more than 30 Home runs.</p>
+<pre class="r"><code>query&lt;-&quot;SELECT playerID,yearID,teamID,HR
+FROM Batting
+WHERE teamID=&#39;PHI&#39; and HR&gt;30 and yearID&lt;=1979 and yearID&gt;=1970&quot;
+
+sqldf(query)</code></pre>
+<pre><code>##    playerID yearID teamID HR
+## 1 johnsde01   1971    PHI 34
+## 2 schmimi01   1974    PHI 36
+## 3 luzingr01   1975    PHI 34
+## 4 schmimi01   1975    PHI 38
+## 5 schmimi01   1976    PHI 38
+## 6 luzingr01   1977    PHI 39
+## 7 schmimi01   1977    PHI 38
+## 8 luzingr01   1978    PHI 35
+## 9 schmimi01   1979    PHI 45</code></pre>
+<p>As you can see in the above chart, the answer is 9 instances.</p>
+<p>It is important to note the changes in the query. The team was now the Phillies, so this required teamID=‘PHI’ instead of teamID=‘NYA’. Also because you were searching for instances throughout the 1970s, it was necessary to state that you were searching between 1970 and 1979. If only 1970 is written then every date from 1970 on will appear. Hence why it was important to have yearID&lt;=1979.</p>
+</div>
+</div>

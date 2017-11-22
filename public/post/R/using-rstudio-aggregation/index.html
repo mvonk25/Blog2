@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Using RStudio: Aggregation &#8211; A Bookworm&#39;s Paradise</title>
+<meta name="description" content="">
+
+    
+
+<meta name="keywords" content="Chart, Visualization">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="/post/r/using-rstudio-aggregation/">
+
+
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+<script src="/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<link rel="shortcut icon" href="/favicon.png">
+
+
+</head>
+
+<body id="post" >
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation" style="display:inline-block">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="/">Home</a></li>
+		<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+			
+				<li>
+					
+					<img src="/images/Face.jpg" alt="Molly Vonk's photo" class="author-photo">
+					
+					<h4>Molly Vonk</h4>
+					<p>An avid reader</p>
+				</li>
+				<li><a href="/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				
+				
+				
+				
+				
+				<li>
+					<a href="https://github.com/dldx/hpstr-hugo-theme"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+				
+				
+				
+				
+			
+			</ul>
+		</li>
+		<li>
+			<a href="#">Posts</a>
+			<ul class="dl-submenu">
+				<li><a href="/posts/">All Posts</a></li>
+				<li><a href="/tags/">All Tags</a></li>
+			</ul>
+		</li>
+		
+	    <li><a href="/theme-setup/" >Theme Setup</a></li>
+	  
+	    <li><a href="http://mademistakes.com" target="_blank">External Link</a></li>
+	  
+	</ul>
+</nav>
+
+ 
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="/post/r/using-rstudio-aggregation/" rel="bookmark" title="Using RStudio: Aggregation">Using RStudio: Aggregation</a></h1>
+        
+         
+        <h2><span class="entry-date date published"><time datetime="2017-11-18 00:00:00 &#43;0000 UTC">November 18, 2017</time></span></h2>
+        
+      <p class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+        Reading time ~2 minutes
+    </p>
+      </div>
+    </header>
+    <div class="entry-content">
+      <div id="aggregation" class="section level2">
+<h2>Aggregation</h2>
+<p>With SQL, you can squash the charts down into a more defined listing or even a single record. This is done with the GROUP BY command combined with a few other commands to specify specifically what you want to do with the data. You can use the command sum to find the total of the data, the command avg to find the average of the data, the command max to find the maximum of the data, and the command min to find the minimum of the data.</p>
+<p>You will need the following packages:</p>
+<pre class="r"><code>library(Lahman)
+library(sqldf)</code></pre>
+<p>Here are some examples using GROUP BY command and the different Aggregation commands.</p>
+<div id="example-1-using-sum" class="section level5">
+<h5>Example 1: Using Sum</h5>
+<p>For instance, suppose you want to find Babe Ruth’s career home run total. We could do the following:</p>
+<pre class="r"><code>query&lt;-&quot;SELECT playerID,sum(HR) 
+FROM Batting 
+WHERE playerID=&#39;ruthba01&#39; 
+GROUP BY playerID&quot;
+
+sqldf(query)</code></pre>
+<pre><code>##   playerID sum(HR)
+## 1 ruthba01     714</code></pre>
+<p>Here are a few more examples of using the GROUP BY command using the Lahman database.</p>
+</div>
+<div id="example-2-using-sum" class="section level5">
+<h5>Example 2: Using Sum</h5>
+<p>Find all the career home run totals for all players, but limit the output to totals from 600 or more. Order by career total from largest to smallest on the chart.</p>
+<pre class="r"><code>query&lt;-&quot;SELECT playerID,sum(HR) 
+FROM Batting 
+GROUP BY playerID 
+HAVING sum(HR)&gt;=600 
+ORDER BY sum(HR) DESC&quot;
+
+sqldf(query)</code></pre>
+<pre><code>##    playerID sum(HR)
+## 1 bondsba01     762
+## 2 aaronha01     755
+## 3  ruthba01     714
+## 4 rodrial01     696
+## 5  mayswi01     660
+## 6 griffke02     630
+## 7 thomeji01     612
+## 8  sosasa01     609</code></pre>
+<p>As you can see in the above chart, the answer is 8 players.</p>
+<p>It is important to note that when GROUP BY command comes right after the FROM command, then the WHERE command is changed to the HAVING command. WHERE and HAVING commands do the same things, but which command to use is dependent on its placement in the command string.</p>
+</div>
+<div id="example-3-using-average" class="section level5">
+<h5>Example 3: Using Average</h5>
+<p>Find all the players who have averaged more than 30 home runs per year throughout their career. Let’s order by having the highest average at the top of the chart.</p>
+<pre class="r"><code>query&lt;-&quot;SELECT playerID,avg(HR) 
+FROM Batting 
+GROUP BY playerID 
+HAVING avg(HR)&gt;30 
+ORDER BY avg(HR) DESC&quot;
+
+sqldf(query)</code></pre>
+<pre><code>##     playerID  avg(HR)
+## 1  pujolal01 36.93750
+## 2  bondsba01 34.63636
+## 3  mcgwima01 34.29412
+## 4  kinerra01 33.54545
+## 5  aaronha01 32.82609
+## 6  bryankr01 32.50000
+## 7   ruthba01 32.45455
+## 8   sosasa01 32.05263
+## 9  cabremi01 31.85714
+## 10 belleal01 31.75000
+## 11 rodrial01 31.63636
+## 12 schmimi01 30.44444
+## 13 abreujo02 30.33333</code></pre>
+<p>As you can see in the above chart, the answer is 13 players.</p>
+</div>
+</div>
+
+      <footer class="entry-meta">
+          
+        <span class="entry-tags"><a href="/tags/#chart" title="Pages tagged chart" class="tag"><span class="term">chart</span></a><a href="/tags/#visualization" title="Pages tagged visualization" class="tag"><span class="term">visualization</span></a></span>
+        
+        
+         -->
+
+      </footer>
+    </div>
+    
+    <section id="disqus_thread"><div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hpstrhugo';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+    
+  </article>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span> Powered by <a href="https://gohugo.io/" rel="nofollow">Hugo</a> using the <a href="https://github.com/dldx/hpstr-hugo-theme" rel="nofollow">HPSTR</a> theme.</span>
+
+  </footer>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="\/js\/vendor\/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/js/scripts.min.js"></script>
+
+
+
+</body>
+</html>
+
